@@ -454,7 +454,7 @@ export function renderHome(clientJs: string): string {
       <a href="/about">About</a>
     </div>
     <h1>Simple Image Uploader</h1>
-    <p>This is a demonstration of React hydration with an image uploader component.</p>
+    <p>This is a demonstration of React hydration with an image uploader component x.</p>
     
     <!-- Root element for React -->
     <div id="app-root">
@@ -478,5 +478,5 @@ export function renderHome(clientJs: string): string {
     </div>
   </div>
 </body>
-</html>`
+</html>`;
 }

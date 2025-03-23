@@ -4,8 +4,6 @@ import { handleImageOptimize } from "./api";
 import type { Serve } from "bun";
 
 type RouteHandler = (clientJs: string) => Response;
-type ApiHandler = (req: Request) => Promise<Response>;
-
 interface Routes {
 	[key: string]: RouteHandler;
 }

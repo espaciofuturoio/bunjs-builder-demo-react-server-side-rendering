@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { SimpleImageUploader } from '../components/SimpleImageUploader';
+import { SimpleImageUploader } from '../components/simple_image_uploader';
 
 /**
  * Client-side entry point for the home page
