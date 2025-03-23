@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SimpleImageUploader } from './SimpleImageUploader';
+import { SimpleImageUploader } from './simple_image_uploader';
 
 interface HomeProps {
   onClientSide?: boolean;

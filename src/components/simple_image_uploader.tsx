@@ -148,10 +148,10 @@ const isValidImageHeader = (header: Uint8Array): boolean => {
 };
 
 interface SimpleImageUploaderProps {
-  onClientSide: boolean;
+  onClientSide?: boolean;
 }
 
-export const SimpleImageUploader: React.FC<SimpleImageUploaderProps> = ({ onClientSide }) => {
+export const SimpleImageUploader: React.FC<SimpleImageUploaderProps> = ({ onClientSide = true }) => {
   console.log('SimpleImageUploader component rendering, onClientSide:', onClientSide);
 
   // Only initialize state if on client side to avoid hydration mismatch
