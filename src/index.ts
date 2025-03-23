@@ -4,7 +4,7 @@
 import { serve } from "bun";
 import { routeHandler } from "./routes";
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3005;
 
 console.log(`Starting server on port ${PORT}...`);
 

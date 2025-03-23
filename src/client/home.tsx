@@ -1,32 +1,30 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { SimpleImageUploader } from '../components/simple_image_uploader';
+import { Home } from '../components/Home';
 
 /**
  * Client-side entry point for the home page
  */
-function App() {
-  const [isHydrated, setIsHydrated] = React.useState(false);
+console.log('Client home.js bundle loaded');
 
-  React.useEffect(() => {
-    setIsHydrated(true);
-  }, []);
+// Add error logging
+window.addEventListener('error', (event) => {
+  console.error('Client-side error:', event.error);
+});
 
-  return (
-    <div className="flex flex-col items-center p-4">
-      <SimpleImageUploader onClientSide={true} />
-      <p id="hydration-message" className={isHydrated ? 'hydrated' : ''}>
-        {isHydrated ? 'React has hydrated! 🚀' : 'Waiting for hydration...'}
-      </p>
-    </div>
-  );
-}
-
-// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded, looking for app-root');
   const appRoot = document.getElementById('app-root');
   if (appRoot) {
-    const root = createRoot(appRoot);
-    root.render(<App />);
+    console.log('Found app-root, creating React root for hydration');
+    try {
+      const root = createRoot(appRoot);
+      root.render(<Home onClientSide={true} />);
+      console.log('React root render called');
+    } catch (error) {
+      console.error('Error during React hydration:', error);
+    }
+  } else {
+    console.error('Could not find app-root element!');
   }
 }); 

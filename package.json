@@ -7,8 +7,11 @@
 	"module": "src/index.ts",
 	"scripts": {
 		"dev": "bun run --watch src/index.ts",
+		"dev:all": "./build.sh --watch",
 		"start": "bun run src/index.ts",
-		"build": "bun build src/client/*.tsx --outdir dist/client --target browser"
+		"build": "bun build src/client/*.tsx --outdir dist/client --target browser",
+		"build:client": "bun build src/client/*.tsx --outdir dist/client --target browser",
+		"build:all": "bun run build:client"
 	},
 	"dependencies": {
 		"bun-plugin-tailwind": "^0.0.14",
