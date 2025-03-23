@@ -7,19 +7,23 @@
 	"module": "src/index.ts",
 	"scripts": {
 		"dev": "bun run --watch src/index.ts",
+		"dev:all": "./build.sh --watch",
 		"start": "bun run src/index.ts",
-		"build": "bun build src/client/*.tsx --outdir dist/client --target browser"
+		"build": "bun build src/client/*.tsx --outdir dist/client --target browser",
+		"build:client": "bun build src/client/*.tsx --outdir dist/client --target browser",
+		"build:all": "bun run build:client"
 	},
 	"dependencies": {
-		"bun-plugin-tailwind": "^0.0.14",
-		"tailwindcss": "^4.0.9",
+		"browser-image-compression": "^2.0.2",
+		"buffer": "^6.0.3",
+		"bun-plugin-tailwind": "^0.0.15",
+		"daisyui": "^5.0.9",
+		"heic-to": "^1.1.10",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"browser-image-compression": "^2.0.2",
-		"webp-converter-browser": "^1.0.4",
-		"heic-to": "^1.1.10",
 		"sharp": "^0.33.2",
-		"buffer": "^6.0.3"
+		"tailwindcss": "^4.0.9",
+		"webp-converter-browser": "^1.0.4"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",

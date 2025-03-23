@@ -4,22 +4,26 @@ import { handleImageOptimize } from "./api";
 import type { Serve } from "bun";
 
 type RouteHandler = (clientJs: string) => Response;
-type ApiHandler = (req: Request) => Promise<Response>;
-
 interface Routes {
-	[key: string]: RouteHandler;
+	[key: string]: {
+		handler: RouteHandler;
+		clientJs: string;
+	};
 }
 
-// Define all available routes
+// Define all available routes with their corresponding client JS files
 const routes: Routes = {
-	"/": (clientJs: string) => {
-		return homeRoute(clientJs);
+	"/": {
+		handler: homeRoute,
+		clientJs: "home.js",
 	},
-	"/home": (clientJs: string) => {
-		return homeRoute(clientJs);
+	"/home": {
+		handler: homeRoute,
+		clientJs: "home.js",
 	},
-	"/about": (clientJs: string) => {
-		return aboutRoute(clientJs);
+	"/about": {
+		handler: aboutRoute,
+		clientJs: "about.js",
 	},
 };
 
@@ -47,13 +51,19 @@ export function routeHandler(
 			return new Response("Not Found", { status: 404 });
 		}
 
-		return new Response(file);
+		// Set proper content type for JavaScript files
+		const headers: Record<string, string> = {};
+		if (assetPath.endsWith(".js")) {
+			headers["Content-Type"] = "application/javascript";
+		}
+
+		return new Response(file, { headers });
 	}
 
 	// Handle page routes
-	const handler = routes[path];
-	if (handler) {
-		return handler("home.js"); // Using home.js as the client JS for all routes for now
+	const route = routes[path];
+	if (route) {
+		return route.handler(route.clientJs);
 	}
 
 	// 404 for everything else
